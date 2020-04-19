@@ -7,12 +7,14 @@
  * Original Author: RyiSnow
  */
 
+import java.util.Random;
 import java.util.Scanner;
 
 public class AdventureGame {
 	
 	private static Scanner myScanner = new Scanner(System.in);
 	private static Scanner enterScanner = new Scanner(System.in);
+	public static Random myRandom = new Random();
 
 	private static int playerHP;
 	private static String playerName;
@@ -184,10 +186,10 @@ public class AdventureGame {
 		int playerDamage = 0;
 		
 		if (playerWeapon.equals("Knife")) {
-			playerDamage = new java.util.Random().nextInt(5); //TODO import util 
+			playerDamage = myRandom.nextInt(5);
 		}
 		else if (playerWeapon.equals("Long Sword")) {
-			playerDamage = new java.util.Random().nextInt(8); 
+			playerDamage = myRandom.nextInt(8); 
 		}
 		System.out.println("You attacked the monster and gave " + playerDamage + " damage!");
 		monsterHP -= playerDamage;
@@ -195,7 +197,7 @@ public class AdventureGame {
 		
 		if (monsterHP < 1) { winFight(); } else if (monsterHP > 0) {
 			int monsterDamage =0;
-			monsterDamage = new java.util.Random().nextInt(4);
+			monsterDamage = myRandom.nextInt(4);
 			System.out.println("The monster attacked you and gave " + monsterDamage + " damage!");
 			playerHP -= monsterDamage;
 			System.out.println("Player HP: " + playerHP);
