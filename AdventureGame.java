@@ -98,7 +98,7 @@ public class AdventureGame {
 				townGate();
 				break;
 			default:
-				crossRoad();
+				west();
 				break;
 		}
 	}
