@@ -51,29 +51,29 @@ public class AdventureGame {
 		System.out.println("3: Leave");
 		System.out.println("\n------------------------------------------------------------------\n");
 		choice = myScanner.nextInt();
-		
-		if (choice==1) {
-			if (silverRing) {
-				ending();
-			}
-			else { 
-				System.out.println("Guard: Hello there, stranger. So your name is " + playerName + "? \nSorry but we cannot let stranger enter our town.");
+
+		switch (choice) {
+			case 1:
+				if (silverRing) {ending();} 
+				else {
+					System.out.println("Guard: Hello there, stranger. So your name is " + playerName + "? \nSorry but we cannot let stranger enter our town.");
+					enterScanner.nextLine();
+					townGate();
+				}
+				break;
+			case 2:
+				playerHP = playerHP-1;
+				System.out.println("Guard: Hey don't be stupid.\n\nThe guard hit you so hard and you gave up.\n(You receive 1 damage)\n");
+				System.out.println("Your HP: " + playerHP);
 				enterScanner.nextLine();
 				townGate();
-			}
-		}
-		else if (choice==2) {
-			playerHP = playerHP-1;
-			System.out.println("Guard: Hey don't be stupid.\n\nThe guard hit you so hard and you gave up.\n(You receive 1 damage)\n");
-			System.out.println("Your HP: " + playerHP);
-			enterScanner.nextLine();
-			townGate();
-		}
-		else if (choice==3) {
-			crossRoad();
-		}	
-		else {
-			townGate();
+				break;
+			case 3:
+				crossRoad();
+				break;
+			default:
+				townGate();
+				break;
 		}
 	}
 	
@@ -87,20 +87,19 @@ public class AdventureGame {
 		System.out.println("\n------------------------------------------------------------------\n");
 		choice = myScanner.nextInt();
 		
-		if (choice==1) {
-			north();
-		}
-		else if (choice==2) {
-			east();
-		}
-		else if (choice==3) {
-			townGate();
-		}
-		else if (choice==4) {
-			west();
-		}
-		else {
-			crossRoad();
+		switch (choice) {
+			case 1:
+				north();
+				break;
+			case 2:
+				east();
+				break;
+			case 3:
+				townGate();
+				break;
+			default:
+				crossRoad();
+				break;
 		}
 	}
 	
@@ -114,7 +113,7 @@ public class AdventureGame {
 		System.out.println("\n------------------------------------------------------------------\n");
 		choice = myScanner.nextInt();
 		
-		if (choice==1) {
+		if (choice == 1) {
 			crossRoad();
 		}
 		else {
@@ -131,7 +130,7 @@ public class AdventureGame {
 		System.out.println("\n------------------------------------------------------------------\n");
 		choice = myScanner.nextInt();
 		
-		if (choice==1) {
+		if (choice == 1) {
 			crossRoad();
 		}
 		else {
@@ -147,14 +146,15 @@ public class AdventureGame {
 		System.out.println("\n------------------------------------------------------------------\n");
 		choice = myScanner.nextInt();
 		
-		if (choice==1) {
-			fight();
-		}
-		else if (choice==2) {
-			crossRoad();
-		}
-		else {
-			west();
+		switch (choice) {
+			case 1:
+				fight();
+				break;
+			case 2:
+				crossRoad();
+				break;
+			default:
+				west();
 		}
 	}
 	
@@ -167,14 +167,15 @@ public class AdventureGame {
 		System.out.println("\n------------------------------------------------------------------\n");
 		choice = myScanner.nextInt();
 		
-		if (choice==1) {
-			attack();
-		}
-		else if (choice==2) {
-			crossRoad();
-		}
-		else {
-			fight();
+		switch (choice) {
+			case 1:
+				attack();
+				break;
+			case 2:
+				crossRoad();
+				break;
+			default:
+				fight();
 		}
 	}
 	
@@ -191,13 +192,13 @@ public class AdventureGame {
 		monsterHP -= playerDamage;
 		System.out.println("Monster HP: " + monsterHP);
 		
-		if (monsterHP<1) { win(); } else if (monsterHP>0) {
+		if (monsterHP < 1) { win(); } else if (monsterHP > 0) {
 			int monsterDamage =0;
 			monsterDamage = new java.util.Random().nextInt(4);
 			System.out.println("The monster attacked you and gave " + monsterDamage + " damage!");
 			playerHP -= monsterDamage;
 			System.out.println("Player HP: " + playerHP);
-			if (playerHP<1) { dead(); } else if (playerHP>0) {
+			if (playerHP < 1) { dead(); } else if (playerHP > 0) {
 				fight();
 			}
 		}
@@ -220,7 +221,7 @@ public class AdventureGame {
 		silverRing = true;
 		choice = myScanner.nextInt();
 		
-		if (choice==1) {
+		if (choice == 1) {
 			crossRoad();
 		}
 		else {
