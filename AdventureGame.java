@@ -16,7 +16,7 @@ public class AdventureGame {
 	String playerWeapon;
 	int choice;
 	int monsterHP;
-	int silverRing;
+	boolean silverRing = false;
 		
 	public static void main(String[] args) {
 
@@ -53,7 +53,7 @@ public class AdventureGame {
 		choice = myScanner.nextInt();
 		
 		if (choice==1) {
-			if (silverRing==1) {
+			if (silverRing) {
 				ending();
 			}
 			else { 
@@ -217,7 +217,7 @@ public class AdventureGame {
 		System.out.println("You obtaind a silver ring!\n\n");
 		System.out.println("1: Go east");
 		System.out.println("\n------------------------------------------------------------------\n");		
-		silverRing = 1;
+		silverRing = true;
 		choice = myScanner.nextInt();
 		
 		if (choice==1) {
